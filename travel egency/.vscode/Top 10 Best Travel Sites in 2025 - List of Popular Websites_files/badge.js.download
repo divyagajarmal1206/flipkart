@@ -1,0 +1,1065 @@
+var site_url = 'https://reliablesite.org/';
+var fileUrl = 'https://reliablesite.org/badge.php';
+
+var hidemob = document.currentScript.getAttribute('hidemob');
+
+/*var ismobdev = "no";
+
+ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  // true for mobile device
+  ismobdev = "yes" ;
+}else{
+  // false for not mobile device;
+  ismobdev = "no" ;
+
+ */
+
+
+var typebadge = document.currentScript.getAttribute('typebadge'); 
+
+
+if(typebadge == 'box'){
+					
+	var postion = document.currentScript.getAttribute('postion'); 
+	var site_id = document.currentScript.getAttribute('site_id'); 
+	var badge = document.currentScript.getAttribute('badge'); 
+	var scroll = document.currentScript.getAttribute('scroll'); 
+	var scrollpixel = document.currentScript.getAttribute('scrollpixel'); 
+	
+	
+	fetch(site_url,{"mode" : "no-cors"}).then(function(response) {
+		if (response.status === 0) {
+			
+			fetch(fileUrl).then(function(response) {
+				var ismobdev = "no";
+				if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+					ismobdev = "yes" ;
+				}else{
+					ismobdev = "no" ;
+				}
+				if (response.status === 200) {	
+
+					var badgewith = '73%';	
+					if(window.innerWidth <= 1920 && window.innerWidth >= 1080){
+						badgewith = '55%';	
+					}else if(window.innerWidth <= 1080 && window.innerWidth >= 768){
+						badgewith = '55%';	
+					}else if(window.innerWidth <= 768){
+						badgewith = '45%';	
+					}
+
+											
+					if(window.innerWidth <= 767){
+						var iframebottom = 'bottom:10px;';
+						var iframefloat = postion+":10px;";
+					}else{
+						var iframebottom = 'bottom:30px;';
+						var iframefloat = postion+":30px;";
+					}		
+					var crntsit = window.location.origin;
+					var htmltoappend = '<iframe src="'+site_url+'badge.php?site_id='+site_id+'&typebadge='+typebadge+'&current_site='+crntsit+'&checkwidth='+window.innerWidth+'&ran='+Math.random()+'&ismobdev='+ismobdev+'" id="stripe_badge" class="stripe_badge" style="width:340px;height:430px;border:none;display:none;'+iframebottom+iframefloat+'"></iframe><div class="smalbox ddddddd" style="float:'+postion+';margin-top: 15px;" id="smalbox" onclick="showiframebox()" ><img src="'+badge+'" class="'+badge+'" style="width:'+badgewith+';float:'+postion+';" /></div>';
+								
+								
+					var div = document.createElement('div');
+					div.className = 'badge_div';
+					div.id = 'badge_wrapper';
+					div.style.cssText = 'z-index:9999;position:fixed;'+iframebottom+iframefloat;
+					div.innerHTML = htmltoappend;
+					document.body.appendChild(div);
+					
+					function receiveMessage(event) {
+						if (event.data === 'closeIframe') {
+							var iframe = document.getElementById('stripe_badge');
+							iframe.style.display = 'none';
+						}
+					}
+					window.addEventListener('message', receiveMessage, false);	
+									
+					if(scroll=='1'){
+						document.getElementById("badge_wrapper").style.display = 'none';
+						window.onscroll = function() {
+							var distanceScrolled = document.documentElement.scrollTop;
+							if (distanceScrolled >= scrollpixel) {
+							 document.getElementById('badge_wrapper').style.display = 'block';
+							}else{
+							document.getElementById('badge_wrapper').style.display = 'none';	
+							}
+						}
+					}
+				} else {
+				  console.log('Error');
+										 
+				}
+			})
+			.catch(function(error) {  
+				console.log('Error occurred while checking file existence:', error);
+			});
+		}
+	})	
+	function showiframebox() {
+	  var x = document.getElementById("stripe_badge");
+		
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+	}
+}
+
+
+if(typebadge == 'stripe' || typebadge == 'verified' || typebadge == 'verified_rat'){
+	
+	var postion = document.currentScript.getAttribute('postion'); 
+	var site_id = document.currentScript.getAttribute('site_id'); 
+	var badge = document.currentScript.getAttribute('badge'); 
+	var scroll = document.currentScript.getAttribute('scroll'); 
+	var scrollpixel = document.currentScript.getAttribute('scrollpixel'); 
+	
+	fetch(site_url,{"mode" : "no-cors"}).then(function(response) {
+		if (response.status === 0) {
+			fetch(fileUrl).then(function(response) {
+				var ismobdev = "no";
+				if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+					ismobdev = "yes" ;
+				}else{
+					ismobdev = "no" ;
+				}
+				if (response.status === 200) {
+					var badgewith = '73%';	
+					if(window.innerWidth <= 1920 && window.innerWidth >= 1080){
+						badgewith = '60%';	
+					}else if(window.innerWidth <= 1080 && window.innerWidth >= 768){
+						badgewith = '60%';	
+					}else if(window.innerWidth <= 768){
+						badgewith = '55%';	
+					}	
+					
+					
+					if(window.innerWidth <= 767){
+						var iframebottom = 'bottom:15px;';
+						var iframefloat = postion+":0px;";
+					}else{
+						var iframebottom = 'bottom:50px;';
+						var iframefloat = postion+":0px;";
+					}		
+					var crntsit = window.location.origin;
+					var htmltoappend = '<iframe src="'+site_url+'badge.php?site_id='+site_id+'&typebadge='+typebadge+'&current_site='+crntsit+'&checkwidth='+window.innerWidth+'&ran='+Math.random()+'&ismobdev='+ismobdev+'" id="stripe_badge" class="stripe_badge" style="width:340px;height:430px;border:none;display:none;'+iframebottom+iframefloat+'"></iframe><div class="smalbox ddddddd" id="smalbox" style="float:'+postion+';margin-top: 15px;" onclick="showiframebox1()" ><img src="'+badge+'" class="'+badge+'" style="width:'+badgewith+';float:'+postion+';" /></div>';
+					var div = document.createElement('div');
+					div.className = 'badge_div';
+					div.id = 'badge_wrapper';
+					div.style.cssText = 'z-index:9999;position:fixed;'+iframebottom+iframefloat;
+					div.innerHTML = htmltoappend;
+					document.body.appendChild(div);
+					
+					
+					function receiveMessage(event) {
+						if (event.data === 'closeIframe') {
+							var iframe = document.getElementById('stripe_badge');
+							iframe.style.display = 'none';
+						}
+					}
+					window.addEventListener('message', receiveMessage, false);	
+					
+					if(scroll=='1'){
+						document.getElementById("badge_wrapper").style.display = 'none';
+						window.onscroll = function() {
+							var distanceScrolled = document.documentElement.scrollTop;
+							if (distanceScrolled >= scrollpixel) {
+							 document.getElementById('badge_wrapper').style.display = 'block';
+							}else{
+							document.getElementById('badge_wrapper').style.display = 'none';	
+							}
+						}
+					}
+				} else {
+					console.log('Error');
+				}
+			})
+			.catch(function(error) {  
+				console.log('Error occurred while checking file existence:', error);
+			});
+		}
+	})	
+	function showiframebox1() {
+	  var x = document.getElementById("stripe_badge");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		  } else {
+			x.style.display = "none";
+		  }
+	}
+}
+
+if(typebadge == "easymiddle")
+{
+	var badg_pos = document.currentScript.getAttribute('badg_pos'); 
+	var postion = document.currentScript.getAttribute('postion'); 
+	var site_id = document.currentScript.getAttribute('site_id'); 
+	var mainclassname = document.currentScript.getAttribute('mainclassname'); 
+	var stylemain = document.currentScript.getAttribute('stylemain'); 
+	var badgemain = document.currentScript.getAttribute('badgemain'); 
+	var fontbold_ver = document.currentScript.getAttribute('fontbold_ver'); 
+	var fontcolor_ver = document.currentScript.getAttribute('fontcolor_ver'); 
+	var rotateRS = document.currentScript.getAttribute('rotateRS'); 
+	var badgers = document.currentScript.getAttribute('badgers'); 
+	var scroll = document.currentScript.getAttribute('scroll'); 
+	var scrollpixel = document.currentScript.getAttribute('scrollpixel'); 
+	var easymiddle_language = document.currentScript.getAttribute('easymiddle_language'); 
+	
+	fetch(site_url,{"mode" : "no-cors"}).then(function(response) {
+		if (response.status === 0) {
+			fetch(fileUrl).then(function(response) {
+				var ismobdev = "no";
+				if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+					ismobdev = "yes" ;
+				}else{
+					ismobdev = "no" ;
+				}
+				if (response.status === 200) {	
+					//var badgewith = '50%';
+					var badgewith = '73%';	
+					if(window.innerWidth <= 1920 && window.innerWidth >= 1080){
+						badgewith = '55%';	
+					}else if(window.innerWidth <= 1080 && window.innerWidth >= 768){
+						badgewith = '55%';	
+					}else if(window.innerWidth <= 768){
+						badgewith = '45%';	
+					}	
+					var iframebottom = "";
+					if(window.innerWidth <= 767){
+						var iframebottom = 'bottom:10px;';
+						var iframefloat = postion+":0px;";
+						if(badg_pos == 'top-middle')
+						{
+							var iframecss = 'width: 330px;height:420px;margin: 0px auto;inset: 0px 0px 10px;';
+							if(easymiddle_language == "german")
+							{
+								var iframecss = 'width: 340px;height:420px;margin: 0px auto;inset: 0px 0px 10px;';
+							}else if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 360px;height:420px;margin: 0px auto;inset: 0px 0px 10px;';
+							}
+						}
+						if(badg_pos == 'bottom-middle'){
+							var iframecss = 'width: 330px;height:422px;left: 0;right: 0;margin: 0 auto;';
+							if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 360px;height:420px;left: 0;right: 0;margin: 0 auto;';
+							}
+						}
+						if(badg_pos == 'right-middle'){
+							var iframecss = 'width: 330px;height:420px;';
+							if(easymiddle_language == "german")
+							{
+								var iframecss = 'width: 350px;height:400px;';
+							}else if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 370px;height:400px;';
+							}
+						}
+						if(badg_pos == 'left-middle'){
+							var iframecss = 'width: 330px;height:420px;';
+							if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 370px;height:400px;';
+							}else if(easymiddle_language == "german")
+							{
+								var iframecss = 'width: 350px;height:400px;';
+							}
+						}
+					}else{
+						var iframebottom = 'bottom:46px;';
+						var iframefloat = postion+":0px;";
+						if(badg_pos == 'top-middle')
+						{
+							var iframecss = 'width: 340px;height:420px;';
+							if(easymiddle_language == "german")
+							{
+								var iframecss = 'width: 390px;height:420px;';
+							}else if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 420px;height:420px;';
+							}
+						}
+						if(badg_pos == 'bottom-middle'){
+							var iframecss = 'width: 350px;height:426px;';
+							if(easymiddle_language == "german")
+							{
+								var iframecss = 'width: 400px;height:426px;';
+							}else if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 420px;height:426px;';
+							}
+						}
+						if(badg_pos == 'right-middle'){
+							var iframecss = 'width: 350px;height:420px;';
+							if(easymiddle_language == "german")
+							{
+								var iframecss = 'width: 400px;height:400px;';
+							}else if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 430px;height:410px;';
+							}
+						}
+						if(badg_pos == 'left-middle'){
+							var iframecss = 'width: 350px;height:420px;';
+							if(easymiddle_language == "german")
+							{
+								var iframecss = 'width: 410px;height:420px;';
+							}else if(easymiddle_language == "french")
+							{
+								var iframecss = 'width: 430px;height:400px;';
+							}
+						}
+					}
+					
+					if(easymiddle_language == "french")
+					{
+						var verifiedtxt = "VÉRIFIÉ";
+						var set_width = "120px";
+					}else if(easymiddle_language == "german"){
+						var verifiedtxt = "EHRLICH";
+						var set_width = "120px";
+					}else{
+						var verifiedtxt = "VERIFIED";
+						var set_width = "120px";
+					}
+					
+					
+					
+					var crntsit = window.location.origin;
+					var htmltoappend = '<iframe src="'+site_url+'badge.php?site_id='+site_id+'&typebadge='+typebadge+'&easymiddle_language='+easymiddle_language+'&badg_pos='+badg_pos+'&current_site='+crntsit+'&checkwidth='+window.innerWidth+'&ran='+Math.random()+'&ismobdev='+ismobdev+'" id="easymiddle_badge" class="easymiddle_badge" style="border:none;display:none;position: fixed;z-index:99;'+iframebottom+iframefloat+iframecss+'"></iframe><div class="'+mainclassname+' smalbox ddddddd" style="'+stylemain+'float:'+postion+';" id="smalbox" onclick="showiframebox2()" ><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"><div id="bages_new_design" class="bages_new_design" style="width: '+set_width+'; display: flex;justify-content: space-around;    align-items: center;background: #FFFFFF;border: 2px solid #A81620;    padding: 4px 7px;text-align: center;'+badgemain+'font-weight:'+fontbold_ver+';font-size: 14.23px;font-family: Montserrat;line-height: 8px;color:'+fontcolor_ver+';display: flex;align-items: center;"><img style="width:20%;'+rotateRS+'" src="'+badgers+'" /> '+verifiedtxt+'</div></div>';
+					var div = document.createElement('div');
+					div.className = 'badge_div';
+					div.id = 'badge_wrapper';
+					//div.style.cssText = 'z-index:9999;position:fixed;'+iframebottom+iframefloat;
+					if(badg_pos == 'top-middle')
+					{
+						div.style.cssText = 'z-index: 9999;position: fixed;top: 0px;left: 53%;';
+					}
+					if(badg_pos == 'bottom-middle'){
+						div.style.cssText = 'z-index: 9999;position: fixed;bottom: 0px;left: 53%;';
+					}
+					if(badg_pos == 'right-middle'){
+						div.style.cssText = 'z-index:9999;position:fixed;top: 60%;right: 30px;';
+					}
+					if(badg_pos == 'left-middle'){
+						div.style.cssText = 'z-index:9999;position:fixed;top: 60%;left: 30px;';
+					}
+					div.innerHTML = htmltoappend;
+					setTimeout(function () {
+						document.body.appendChild(div);
+						
+						
+						function receiveMessage(event) {
+							if (event.data === 'closeIframe') {
+								var iframe = document.getElementById('easymiddle_badge');
+								iframe.style.display = 'none';
+								var bagesNewDesign = document.getElementById('bages_new_design');
+								bagesNewDesign.style.display = 'flex';
+							}
+						}
+						window.addEventListener('message', receiveMessage, false);	
+					
+					
+						if(scroll=='1'){
+							document.getElementById("badge_wrapper").style.display = 'none';
+							window.onscroll = function() {
+								var distanceScrolled = document.documentElement.scrollTop;
+								if (distanceScrolled >= scrollpixel) {
+								 document.getElementById('badge_wrapper').style.display = 'block';
+								}else{
+								document.getElementById('badge_wrapper').style.display = 'none';	
+								}
+							}
+						}
+						document.body.addEventListener('click', function (evt) {
+							if (evt.target.className != 'bages_new_design') {
+								var x = document.getElementById("easymiddle_badge");
+								x.style.display = "none";
+								
+								var y = document.getElementById("bages_new_design");
+								y.style.display = "flex";
+							}
+						}, false);
+					}, 1000);
+				} else {
+					console.log('Error');
+				}
+			})
+			.catch(function(error) {  
+				console.log('Error occurred while checking file existence:', error);
+			});
+		}
+	})	
+
+	function showiframebox2() {
+	var x = document.getElementById("easymiddle_badge");
+	var y = document.getElementById("bages_new_design");
+
+	if (x.style.display === "none") {
+		x.style.display = "block";
+		y.style.display = "none";
+	  } else {
+		x.style.display = "none";
+	  }
+	}
+}
+
+
+if(typebadge == 'independentbadge'){
+					
+	var postion = document.currentScript.getAttribute('postion'); 
+	var badg_pos = postion; 
+	var site_id = document.currentScript.getAttribute('site_id'); 
+	
+	var scroll = document.currentScript.getAttribute('scroll'); 
+	var scrollpixel = document.currentScript.getAttribute('scrollpixel'); 
+	var color = document.currentScript.getAttribute('color'); 
+	var independent_language = document.currentScript.getAttribute('independent_language'); 
+	var device = document.currentScript.getAttribute('device'); 
+	
+	if(device != 'mobile'){
+		var newdevi = "desktop";
+	}else{
+		var newdevi = "mobile";
+	}
+	
+
+	var	 badgename = "independent_"+postion+"_"+color+"_"+independent_language+"_"+newdevi;
+
+	//alert(badgename);
+	
+	var badge = site_url+"badges/independentbadge_new/"+badgename+".svg";
+	
+	
+	
+	fetch(site_url,{"mode" : "no-cors"}).then(function(response) {
+		if (response.status === 0) {
+			fetch(fileUrl).then(function(response) {
+				if (response.status === 200) {
+					
+					var ismobdev = "no";
+					if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+						ismobdev = "yes" ;
+					}else{
+						ismobdev = "no" ;
+					}
+					
+					var iframebottom = "";
+					if(window.innerWidth <= 767){
+						var iframebottom = 'bottom:10px;';
+						var iframefloat = postion+":0px;";
+						if(badg_pos == 'top')
+						{
+							var iframecss = 'margin-left: auto;inset: 0px 0px 10px;';
+						}
+						if(badg_pos == 'bottom'){
+							var iframecss = 'left: 0;right: 0;margin-left: auto;';
+						}
+						if(badg_pos == 'right'){
+							iframebottom = 'bottom:180px;position:fixed;';
+							var iframecss = '';
+						}
+						if(badg_pos == 'left'){
+							var iframecss = '';
+						}
+					}else{
+						var iframebottom = 'bottom:46px;';
+						var iframefloat = postion+":0px;";
+						if(badg_pos == 'top')
+						{
+							var iframecss = '';
+						}
+						if(badg_pos == 'bottom'){
+							var iframecss = '';
+						}
+						if(badg_pos == 'right'){
+							iframebottom = 'bottom:50%;';
+							var iframecss = '';
+						}
+						if(badg_pos == 'left'){
+							iframebottom = 'bottom:50%;';
+							var iframecss = '';
+						}
+					}
+					var newstyle = "";
+					var newpostion = "";
+					if(postion == 'top')
+					{
+						newstyle = 'right: 10%;';
+						newpostion = 'right';
+					}
+					if(postion == 'bottom')
+					{
+						if(ismobdev == "yes")
+						{
+							newstyle = 'left: 50%;transform:translateX(-50%);';
+						}else{
+							newstyle = 'right: 10%;';
+						}
+						newpostion = 'right';
+					}
+					
+					if(postion == 'bottom')
+					{
+						newstyle += 'display: flex;align-items: end;flex-direction: row-reverse;flex-wrap: wrap;';
+						if(ismobdev == "yes")
+						{
+							newstyle += 'flex-flow: column-reverse;';
+						}
+					}
+					if(postion == 'left')
+					{
+						if(ismobdev == "no")
+						{
+							newstyle += ' z-index: 9999;position: fixed;top: 80%;left: 0px;display: flex;flex-wrap: wrap;transform: translateY(-50%);';
+						}
+						if(ismobdev == "yes")
+						{
+							newstyle += ' z-index: 9999;position: fixed;bottom: 205px;left: 0px;display: flex;flex-wrap: wrap;align-items: end;';
+						}
+					}
+					if(postion == 'right')
+					{
+						if(ismobdev == "no")
+						{
+							newstyle += ' z-index: 9999;position: fixed;top: 80%;right: 0px;display: flex;flex-wrap: wrap;transform: translateY(-50%);flex-direction: row-reverse;';
+						}
+						if(ismobdev == "yes")
+						{
+							newstyle += 'bottom:auto;z-index: 9999;position: fixed;bottom: 205px;right: 0px;display: flex;flex-wrap: wrap;align-items: start;flex-direction: row-reverse;';
+						}
+					}
+
+					var crntsit = window.location.origin;
+					var showbadge = "";
+					var mobileclass = "";
+					var newbadge = badge;
+					if(device == "mobile")
+					{
+						if(ismobdev  == "yes")
+						{
+							mobileclass = "independentbadge_mobile"
+							var showbadge = "yes";
+							newbadge = badge.replace('desktop', 'mobile');
+							if(independent_language == "french" || independent_language == "german"){
+								iframecss += "width:300px;height:380px;";
+							}else{
+								iframecss += "width:250px;height:376px;";
+							}
+						}
+					}else if(device == "desktop"){
+						if(ismobdev  == "no")
+						{
+							var showbadge = "yes";
+							if(independent_language == "french" || independent_language == "german"){
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:300px;height:380px;position: fixed;bottom: -54px;";
+								}else{
+									iframecss += "width:300px;height:380px;";
+								}
+							}else{
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:250px;height:376px;position: fixed;bottom: -54px;";
+								}else{
+									iframecss += "width:250px;height:380px;";
+								}
+							}
+						}
+					}else{
+						var showbadge = "yes";
+						if(ismobdev  == "no")
+						{
+							var showbadge = "yes";
+							if(independent_language == "french" || independent_language == "german"){
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:300px;height:380px;position: fixed;bottom: -54px;";
+								}else{
+									iframecss += "width:300px;height:380px;";
+								}
+							}else{
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:250px;height:376px;position: fixed;bottom: -54px;";
+								}else{
+									iframecss += "width:250px;height:380px;";
+								}
+							}
+							
+						}else if(ismobdev  == "yes")
+						{
+							mobileclass = "independentbadge_mobile"
+							var showbadge = "yes";
+							newbadge = badge.replace('desktop', 'mobile');
+							if(independent_language == "french" || independent_language == "german"){
+								iframecss += "width:300px;height:380px;";
+							}else{
+								iframecss += "width:250px;height:376px;";
+							}
+						}
+						
+					}
+		
+					if(showbadge == "yes")
+					{
+						var htmltoappend = '<div class="smalbox ddddddd" id="smalbox_independent" style="float:'+newpostion+'; display:flex;" onclick="showiframebox_indpendent()" ><img src="'+newbadge+'" class="smalbox_independent" style="float:'+postion+';" /></div><iframe src="'+site_url+'badge.php?site_id='+site_id+'&typebadge='+typebadge+'&badg_position='+badg_pos+'&current_site='+crntsit+'&checkwidth='+window.innerWidth+'&color='+color+'&independent_language='+independent_language+'&device='+device+'&ran='+Math.random()+'&ismobdev='+ismobdev+'" id="independent_badge" class="independent_badge '+badg_pos+' '+mobileclass+' " style="border:none;display:none;'+iframebottom+iframefloat+iframecss+'"></iframe>';
+						var div = document.createElement('div');
+						div.className = 'badge_div';
+						div.id = 'badge_wrapper';
+						if(badg_pos == 'top')
+						{
+							div.style.cssText = 'z-index: 9999;position: fixed;top: 0px;left: 53%;';
+						}
+						if(badg_pos == 'bottom'){
+							div.style.cssText = 'z-index: 9999;position: fixed;bottom: 0px;left: 53%;';
+						}
+						if(badg_pos == 'right'){
+							div.style.cssText = 'z-index:9999;position:fixed;top: 60%;right: 30px;';
+						}
+						if(badg_pos == 'left'){
+							div.style.cssText = 'z-index:9999;position:fixed;top: 60%;left: 30px;';
+						}
+						
+						div.style.cssText = 'z-index:9999;position:fixed;'+iframebottom+iframefloat+newstyle;
+						div.innerHTML = htmltoappend;
+						setTimeout(function () {
+							document.body.appendChild(div);
+							
+							function receiveMessage(event) {
+								if (event.data === 'closeIframe') {
+									var iframe = document.getElementById('independent_badge');
+									iframe.style.display = 'none';
+									var bagesNewDesign = document.getElementById('smalbox_independent');
+									bagesNewDesign.style.display = 'flex';
+								}
+							}
+							window.addEventListener('message', receiveMessage, false);	
+						
+							if(scroll=='1'){
+								document.getElementById("badge_wrapper").style.display = 'none';
+								window.onscroll = function() {
+									var distanceScrolled = document.documentElement.scrollTop;
+									if (distanceScrolled >= scrollpixel) {
+									 document.getElementById('badge_wrapper').style.display = 'block';
+									}else{
+									document.getElementById('badge_wrapper').style.display = 'none';	
+									}
+								}
+							}
+							document.body.addEventListener('click', function (evt) {
+								console.log(evt.target.className);
+								if (evt.target.className != 'smalbox_independent') {
+									var x = document.getElementById("independent_badge");
+									x.style.display = "none";
+									
+									var y = document.getElementById("smalbox_independent");
+									y.style.display = "flex";
+								}
+							}, false);
+						}, 1100);
+					}
+				} else {
+					console.log('Error');
+				}
+			})
+			.catch(function(error) {  
+				console.log('Error occurred while checking file existence:', error);
+			});
+		}
+	})	
+	function showiframebox_indpendent() {
+		var x = document.getElementById("independent_badge");
+		var y = document.getElementById("smalbox_independent");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+			y.style.display = "none";
+		} else {
+			x.style.display = "none";
+		}
+	}
+	
+}
+if(typebadge == 'eccomercebadge' || typebadge == 'eccomercebadge_min'){
+					
+	var postion = document.currentScript.getAttribute('postion'); 
+	var badg_pos = postion; 
+	var site_id = document.currentScript.getAttribute('site_id'); 
+	
+	var scroll = document.currentScript.getAttribute('scroll'); 
+	var scrollpixel = document.currentScript.getAttribute('scrollpixel'); 
+	var color = document.currentScript.getAttribute('color'); 
+//	var eccomerce_language = document.currentScript.getAttribute('eccomerce_language'); 
+	var device = document.currentScript.getAttribute('device'); 
+	
+	if(device != 'mobile'){
+		var newdevi = "desktop";
+	}else{
+		var newdevi = "mobile";
+	}
+	if(color=='red') {
+		var colorcode = '#A81620';
+		if(typebadge == 'eccomercebadge') {
+		//var iconimage = site_url+'badges/rs_red.png';
+		if(badg_pos=='top') {
+			var imgcss = 'max-width: 138px;';
+			var iconimage = site_url+'badges/eccomerce_red_top.png';
+			} else if(badg_pos=='bottom') {
+				var imgcss = 'max-width: 138px;';
+			var iconimage = site_url+'badges/eccomerce_red_bottom.png';	
+			}
+			 else if(badg_pos=='left') {
+				 var imgcss = 'width: auto; height: 138px;';
+			var iconimage = site_url+'badges/eccomerce_red_left.png';	
+			}
+			else {
+				var imgcss = 'width: auto; height: 138px;';
+			var iconimage = site_url+'badges/eccomerce_red_right.png';				
+			}
+		}
+		else {
+			if(badg_pos=='top') {
+				var imgcss = 'max-width: 138px;';
+			var iconimage = site_url+'badges/rs_min_red_top.png';
+			} else if(badg_pos=='bottom') {
+				var imgcss = 'max-width: 138px;';
+			var iconimage = site_url+'badges/rs_min_red_bottom.png';	
+			}
+			 else if(badg_pos=='left') {
+				 var imgcss = 'width: auto; height: 138px;';
+			var iconimage = site_url+'badges/rs_min_red_left.png';	
+			}
+			else {
+				var imgcss = 'width: auto; height: 138px;';
+			var iconimage = site_url+'badges/rs_min_red_right.png';				
+			}
+		}		
+	}
+	else {
+		var colorcode = '#4680D3CC';
+		if(typebadge == 'eccomercebadge') {
+		//var iconimage = site_url+'badges/rs_blue.png';
+		//var imgcss = 'max-width: 138px;';
+		if(badg_pos=='top') {
+			var imgcss = 'max-width: 138px;';
+			var iconimage = site_url+'badges/eccomerce_blue_top.png';
+			} else if(badg_pos=='bottom') {
+				var imgcss = 'max-width: 138px;';
+			var iconimage = site_url+'badges/eccomerce_blue_bottom.png';	
+			}
+			 else if(badg_pos=='left') {
+				 var imgcss = 'width: auto; height: 138px;';
+			var iconimage = site_url+'badges/eccomerce_blue_left.png';	
+			}
+			else {
+				var imgcss = 'width: auto; height: 138px;';
+			var iconimage = site_url+'badges/eccomerce_blue_right.png';				
+			}
+		}
+		else {
+			//var iconimage = site_url+'badges/rs_min_blue.png';
+			if(badg_pos=='top') {
+			var imgcss = 'max-width: 138px;';	
+			var iconimage = site_url+'badges/rs_min_blue_top.png';
+			}
+			else if(badg_pos=='bottom') {
+				var imgcss = 'max-width: 138px;';
+				var iconimage = site_url+'badges/rs_min_blue_bottom.png';
+			}
+			else if(badg_pos=='left') {
+				var imgcss = 'width: auto; height: 138px;';
+				var iconimage = site_url+'badges/rs_min_blue_left.png';
+			}
+			else {
+				var imgcss = 'width: auto; height: 138px;';
+			var iconimage = site_url+'badges/rs_min_blue_right.png';				
+			}
+		}
+	}
+
+	var	 badgename = "eccomerce_"+postion+"_"+color+"_"+newdevi;
+
+	//alert(badgename);
+	
+	//var badge = site_url+"badges/eccomercebadge_new/"+badgename+".svg";
+	
+	var badge = site_url+"wp-content/uploads/badges/eccomerce_"+color+".png"; 
+	
+	fetch(site_url,{"mode" : "no-cors"}).then(function(response) {
+		if (response.status === 0) {
+			fetch(fileUrl).then(function(response) {
+				if (response.status === 200) {
+					
+					var ismobdev = "no";
+					if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+						ismobdev = "yes" ;
+					}else{
+						ismobdev = "no" ;
+					}
+					
+					var iframebottom = "";
+					if(window.innerWidth <= 767){
+						var iframebottom = 'bottom:10px;';
+						var iframefloat = postion+":0px;";
+						if(badg_pos == 'top')
+						{
+							var iframecss = 'margin-left: auto;inset: 0px 0px 10px;';
+						}
+						if(badg_pos == 'bottom'){
+							var iframecss = 'left: 0;right: 0;margin-left: auto;';
+						}
+						if(badg_pos == 'right'){
+							iframebottom = 'bottom:180px;position:fixed;';
+							var iframecss = '';
+						}
+						if(badg_pos == 'left'){
+							var iframecss = '';
+						}
+					}else{
+						var iframebottom = 'bottom:46px;';
+						var iframefloat = postion+":0px;";
+						if(badg_pos == 'top')
+						{
+							var iframecss = '';
+						}
+						if(badg_pos == 'bottom'){
+							var iframecss = '';
+						}
+						if(badg_pos == 'right'){
+							iframebottom = 'bottom:50%;';
+							var iframecss = '';
+						}
+						if(badg_pos == 'left'){
+							iframebottom = 'bottom:50%;';
+							var iframecss = '';
+						}
+					}
+					var newstyle = "";
+					var newpostion = "";
+					if(postion == 'top')
+					{
+						newstyle = 'right: 10%;';
+						newpostion = 'right';
+					}
+					if(postion == 'bottom')
+					{
+						if(ismobdev == "yes")
+						{
+							newstyle = 'left: 50%;transform:translateX(-50%);';
+						}else{
+							newstyle = 'right: 10%;';
+						}
+						newpostion = 'right';
+					}
+					
+					if(postion == 'bottom')
+					{
+						newstyle += 'display: flex;align-items: end;flex-direction: row-reverse;flex-wrap: wrap;';
+						if(ismobdev == "yes")
+						{
+							newstyle += 'flex-flow: column-reverse;';
+						}
+					}
+					if(postion == 'left')
+					{
+						if(ismobdev == "no")
+						{
+							newstyle += ' z-index: 9999;position: fixed;top: 80%;left: 0px;display: flex;flex-wrap: wrap;transform: translateY(-50%);';
+						}
+						if(ismobdev == "yes")
+						{
+							newstyle += ' z-index: 9999;position: fixed;bottom: 205px;left: 0px;display: flex;flex-wrap: wrap;align-items: end;';
+						}
+					}
+					if(postion == 'right')
+					{
+						if(ismobdev == "no")
+						{
+							newstyle += ' z-index: 9999;position: fixed;top: 80%;right: 0px;display: flex;flex-wrap: wrap;transform: translateY(-50%);flex-direction: row-reverse;';
+						}
+						if(ismobdev == "yes")
+						{
+							newstyle += 'bottom:auto;z-index: 9999;position: fixed;bottom: 205px;right: 0px;display: flex;flex-wrap: wrap;align-items: start;flex-direction: row-reverse;';
+						}
+					}
+
+					var crntsit = window.location.origin;
+					var showbadge = "";
+					var mobileclass = "";
+					var newbadge = badge;
+					if(device == "mobile")
+					{
+						if(ismobdev  == "yes")
+						{
+							mobileclass = "eccomercebadge_mobile"
+							var showbadge = "yes";
+							newbadge = badge.replace('desktop', 'mobile');
+							/*if(eccomerce_language == "french" || eccomerce_language == "german"){
+								iframecss += "width:300px;height:380px;";
+							}else{ */
+								iframecss += "width:250px;height:490px;";
+							//}
+						}
+					}else if(device == "desktop"){
+						if(ismobdev  == "no")
+						{
+							var showbadge = "yes";
+							/*if(eccomerce_language == "french" || eccomerce_language == "german"){
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:300px;height:380px;position: fixed;bottom: -54px;";
+								}else{
+									iframecss += "width:300px;height:380px;";
+								}
+							}else{ */
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:250px;height:490px;position: fixed;bottom: -54px;";
+								}
+								else if(postion == 'top'){
+									iframecss += "width:250px;height:490px;";
+								}
+								else{
+									iframecss += "width:250px;height:490px;";
+								}
+							//}
+						}
+					}else{
+						var showbadge = "yes";
+						if(ismobdev  == "no")
+						{
+							var showbadge = "yes";
+						/*	if(eccomerce_language == "french" || eccomerce_language == "german"){
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:300px;height:380px;position: fixed;bottom: -54px;";
+								}else{
+									iframecss += "width:300px;height:380px;";
+								}
+							}else{ */
+								if(postion == 'right' || postion == 'left')
+								{	
+									iframecss += "width:250px;height:490px;position: fixed;bottom: -54px;";
+								}
+								else if(postion == 'top') {
+									iframecss += "width:250px;height:490px;";
+								}
+								else{
+									iframecss += "width:250px;height:490px;";
+								}
+							//}
+							
+						}else if(ismobdev  == "yes")
+						{
+							mobileclass = "eccomercebadge_mobile"
+							var showbadge = "yes";
+							newbadge = badge.replace('desktop', 'mobile');
+							/*if(eccomerce_language == "french" || eccomerce_language == "german"){
+								iframecss += "width:300px;height:380px;";
+							}else{ */
+								iframecss += "width:250px;height:490px;";
+							//}
+						}
+						
+					}
+					if(showbadge == "yes")
+					{
+						var htmltoappend = '<div class="smalbox smalbox_eccomerce ddddddd" id="smalbox_eccomerce" style="float:'+newpostion+'; display:flex;" onclick="showiframebox_eccomerce()" ><img src="'+iconimage+'"  style="float:'+postion+'; '+imgcss+'" /></div><iframe src="'+site_url+'badge.php?site_id='+site_id+'&typebadge='+typebadge+'&badg_position='+badg_pos+'&current_site='+crntsit+'&checkwidth='+window.innerWidth+'&color='+color+'&device='+device+'&ran='+Math.random()+'&ismobdev='+ismobdev+'" id="eccomerce_badge" class="eccomerce_badge '+badg_pos+' '+mobileclass+' " style="border:none;display:none;'+iframebottom+iframefloat+iframecss+'"></iframe>';
+						var div = document.createElement('div');
+						div.className = 'badge_div';
+						div.id = 'badge_wrapper';
+						if(badg_pos == 'top')
+						{
+							div.style.cssText = 'z-index: 9999;position: fixed;top: 0px;left: 53%;';
+						}
+						if(badg_pos == 'bottom'){
+							div.style.cssText = 'z-index: 9999;position: fixed;bottom: 0px;left: 53%;';
+						}
+						if(badg_pos == 'right'){
+							div.style.cssText = 'z-index:9999;position:fixed;top: 60%;right: 30px;';
+						}
+						if(badg_pos == 'left'){
+							div.style.cssText = 'z-index:9999;position:fixed;top: 60%;left: 30px;';
+						}
+						
+						div.style.cssText = 'z-index:9999;position:fixed;'+iframebottom+iframefloat+newstyle;
+						div.innerHTML = htmltoappend;
+						setTimeout(function () {
+							document.body.appendChild(div);
+							
+							function receiveMessage(event) {
+								if (event.data === 'closeIframe') {
+									var iframe = document.getElementById('eccomerce_badge');
+									iframe.style.display = 'none';
+									var bagesNewDesign = document.getElementById('smalbox_eccomerce');
+									bagesNewDesign.style.display = 'block';
+								}
+							}
+							window.addEventListener('message', receiveMessage, false);	
+						
+							if(scroll=='1'){
+								document.getElementById("badge_wrapper").style.display = 'none';
+								window.onscroll = function() {
+									var distanceScrolled = document.documentElement.scrollTop;
+									if (distanceScrolled >= scrollpixel) {
+									 document.getElementById('badge_wrapper').style.display = 'block';
+									}else{
+									document.getElementById('badge_wrapper').style.display = 'none';	
+									}
+								}
+							}
+document.body.addEventListener(
+  "click",
+  function (evt) {
+    console.log("Clicked element:", evt.target);
+
+    // Check if the clicked element or any of its parents has the class `smalbox_eccomerce`
+    if (!evt.target.closest(".smalbox_eccomerce")) {
+      var x = document.getElementById("eccomerce_badge");
+      var y = document.getElementById("smalbox_eccomerce");
+
+      if (x) {
+        console.log("Hiding eccomerce_badge");
+        x.style.display = "none";
+      }
+
+      if (y) {
+        console.log("Showing smalbox_eccomerce");
+        y.style.display = "block";
+      }
+    } else {
+      console.log("Clicked inside smalbox_eccomerce. No action taken.");
+    }
+  },
+  false
+);
+
+						}, 1100);
+					}
+				} else {
+					console.log('Error');
+				}
+			})
+			.catch(function(error) {  
+				console.log('Error occurred while checking file existence:', error);
+			});
+		}
+	})	
+	function showiframebox_eccomerce() {
+var x = document.getElementById("eccomerce_badge");
+var y = document.getElementById("smalbox_eccomerce");
+
+		if (x.style.display === "none") {
+			x.style.display = "block";
+			y.style.display = "none";
+		} else {
+
+			x.style.display = "none";
+		}
+	}
+	
+}

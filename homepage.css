@@ -1,0 +1,41 @@
+.img{
+    margin-top: -25px;
+}
+.button{
+    cursor: pointer;
+    transition: 2s;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 17px;
+    margin-top: -14px;
+}
+.button:hover{
+    border: 1px solid blue;
+    background-color: blue;
+    color: white;
+}
+.button2{
+    margin-top: -50px;
+    margin-left: 840px;
+}   
+ .shoping{
+        cursor: pointer;
+        transition: 0.5s;
+        border: 1px solid rgb(224, 221, 221);
+    }
+
+    .shoping:hover {
+        border: 1px solid blue;
+    }
+    .hov{
+        cursor: pointer;
+        transition: 2s;
+        transform: (1,1);
+    }
+    .hov:hover{
+        background-color: white;
+        /* transform: (1,1); */
+         border-radius: 50%;
+         margin-left: -10px;
+    }

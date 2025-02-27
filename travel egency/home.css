@@ -1,0 +1,68 @@
+.main{
+    position: sticky;
+    top: 10px;
+    height: 80px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #59b4ee;
+background-image: linear-gradient(135deg, #59b4ee 0%, #3039de 100%);
+
+
+    
+    
+    
+}
+body{
+   background-image: url("");
+    /* background-image: url("./advanture.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover; /* This makes the image cover the whole background without repeating */
+    /* background-position: center center; This centers the background image */
+    border-radius: 5px;
+    height: 500px;
+   
+
+
+}
+.map{
+    padding-left: 100px;
+}
+.hover{
+    cursor: pointer;
+    transition: 2s;
+    
+    }
+.hover:hover{
+    background-color: white;
+}
+.service{
+    cursor: pointer;
+    transition: 1s;
+}
+.service:hover{
+    background-color:  black;
+    color: white;
+}
+.img{
+    margin-top: -150px;
+}
+.span{
+    margin-top: -30px;
+}
+.imghover{
+    cursor: pointer;
+    transition: 1s;
+}
+.imghover:hover{
+    width: 380px;
+}
+.top{
+    background-color: #59b4ee;
+    background-image: linear-gradient(135deg, #59b4ee 0%, #050eaf 100%);
+    
+    
+}
+/* .cycle{
+    background-color: #59b4ee;
+    background-image: linear-gradient(135deg, #59b4ee 0%, #050eaf 100%);
+} */

@@ -1,0 +1,1 @@
+(function() { var preEngineFunc={ preEngineJS: function (loaderParams) { window.OB_BROWSI_WIDGETS?.inArticle?.ids?.push("DMOA_1","DMOA_1"); }}; window["__browsiLoadFunc"](window["__browsiLoadObject"], preEngineFunc); })();

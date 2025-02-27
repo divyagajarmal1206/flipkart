@@ -1,0 +1,88 @@
+/* .bar{
+    padding: 70px;
+    padding-left: 5px;
+   color: rgb(4, 4, 92);
+   margin-right: -50px;
+
+    } */
+.contact{
+    padding-left: 400px;
+
+
+  
+}
+/* .image{
+    background-image: url("./bus.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* This makes the image cover the whole background without repeating */
+    /* background-position: center center; This centers the background image */
+    height: 600px;
+    margin-top: -40px;
+ } */
+.web{
+   padding-left: 100px;
+  
+}
+/* .main{
+    background-color: rgb(3, 3, 56);
+    color: white;
+    font-size: 20px;
+    height: 70px;
+    display: flex;
+    padding-left: 20px;
+    /* position: sticky;
+    top: 30px;
+} */ */
+.content{
+    background-color: white;
+    font-size: 15px;
+    font-family: cursive;
+    border: 1px solid black;
+    height: 70px;
+    padding-right: 20px;
+    /* position: sticky;
+    top: 30px; */
+    
+}
+.number{
+    padding-left: 60px;
+    color: white;
+    margin-top: 20px;
+}
+.title{
+    font-size: 50px;
+    padding-left: 70px;
+}
+.details{
+    height: 400px;
+    border: none;
+
+}
+.bus{
+    padding-left: 660px;
+    height: 380px;
+    width: 575px;
+    margin-top: 10px;
+}
+.tour{
+    border: none;
+    height: 300px;
+}
+.nav{
+    padding-left: 90px;
+    
+}
+.main{
+    position: sticky;
+    top: 30px;
+    background-color: rgb(237, 203, 141);
+    height: 80px;
+}
+.img{
+    background-image: url("./mountain3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* This makes the image cover the whole background without repeating */
+    /* background-position: center center; This centers the background image */
+    height: 800px;
+    margin-top: -40px;
+}
